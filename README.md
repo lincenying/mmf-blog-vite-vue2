@@ -35,10 +35,10 @@ yarn serve
 ```
 
 Home Site
-http://localhost:8081
+http://localhost:7770
 
 Login
-http://localhost:8081/backend
+http://localhost:7770/backend
 
 # LICENSE
 

@@ -43,10 +43,10 @@ yarn serve
 ```
 
 首页
-http://localhost:8081
+http://localhost:7770
 
 登录
-http://localhost:8081/backend
+http://localhost:7770/backend
 
 # LICENSE
 

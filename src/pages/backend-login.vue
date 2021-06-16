@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import cookies from 'js-cookie'
 import { showMsg } from '@/utils'
 // import api from '~api'
 import aInput from '@/components/_input.vue'
@@ -23,6 +24,13 @@ export default {
     name: 'backend-login',
     components: {
         aInput
+    },
+    beforeRouteEnter(to, from, next) {
+        if (cookies.get('b_user')) {
+            next('/backend/article/list')
+        } else {
+            next()
+        }
     },
     data() {
         return {

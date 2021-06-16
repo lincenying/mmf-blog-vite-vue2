@@ -23,6 +23,7 @@ import ProgressBar from '@/components/progress-bar.vue'
 import 'mavon-editor/dist/css/index.css'
 import 'toastr/build/toastr.css'
 import './assets/css/hljs/googlecode.css'
+import './assets/css/github-markdown.css'
 import './assets/scss/style.scss'
 
 Vue.use(VueBus)
@@ -51,6 +52,7 @@ store.commit('global/setCookies', {
 })
 window.$$store = store
 sync(store, router)
+
 Vue.mixin({
     // 当复用的路由组件参数发生变化时，例如/detail/1 => /detail/2
     /*
@@ -64,7 +66,7 @@ Vue.mixin({
                     store: this.$store,
                     route: to,
                     isServer: false,
-                    isClient: true
+                    isClient: true,
                 })
                 .then(() => {
                     loading.finish()
@@ -77,17 +79,19 @@ Vue.mixin({
     },
     */
 
-    // 路由切换时，保存页面滚动位置
+    // 页面渲染后, 跳转到记录的滚动条位置
     beforeRouteEnter(to, from, next) {
         next(vm => {
             // 通过 `vm` 访问组件实例
             vm.$nextTick().then(() => {
                 const scrollTop = vm.$store.state.appShell.historyPageScrollTop[to.fullPath] || 0
-                window.scrollTo(0, scrollTop)
-                // document.body.scrollTop = vm.$store.state.appShell.historyPageScrollTop[to.fullPath] || 0
+                setTimeout(() => {
+                    window.scrollTo(0, scrollTop)
+                }, 350)
             })
         })
     },
+    // 路由切换时，保存页面滚动位置
     beforeRouteLeave(to, from, next) {
         this.$store.dispatch('appShell/saveScrollTop', {
             path: from.fullPath,
@@ -140,6 +144,7 @@ router.beforeResolve((to, from, next) => {
         })
         .catch(next)
 })
+
 const app = new Vue({
     router,
     store,

@@ -1,3 +1,8 @@
+# vue2版本不再更新, 请移步vue3版本:
+https://github.com/lincenying/mmf-blog-vite-vue3-ssr
+
+---
+
 # mmf-blog vuejs 2.0 v2         [中文说明](https://github.com/lincenying/mmf-blog-vue2/blob/master/README_CN.md)
 
 demo: [http://vue2.mmxiaowu.com](http://vue2.mmxiaowu.com)
